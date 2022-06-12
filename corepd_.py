@@ -1,6 +1,8 @@
 import datetime, os, json
 import PTN
 
+print('tested')
+
 
 def getHTML_table(res):
     html = """
