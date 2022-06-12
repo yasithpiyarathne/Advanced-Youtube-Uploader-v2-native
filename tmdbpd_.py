@@ -1,8 +1,8 @@
-from .tmdbv3api import TMDb, Movie, TV, Episode 
-from .tmdbv3api.exceptions import TMDbException
-from .tmdbv3api.as_obj import AsObj
+from tmdbv3api import TMDb, Movie, TV, Episode 
+from tmdbv3api.exceptions import TMDbException
+from tmdbv3api.as_obj import AsObj
 
-from .env import TMDB_API_KEY
+from env import TMDB_API_KEY
 import datetime
 
 tmdb = TMDb()
