@@ -1,5 +1,5 @@
 import datetime, os, json
-import PTN
+from . import PTN
 
 
 def getHTML_table(res):
