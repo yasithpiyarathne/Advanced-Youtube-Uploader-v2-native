@@ -1,4 +1,5 @@
 from ffprobe import FFProbe
+import os
 
 def get_eng_sub_net_data(media_file):
   metadata = FFProbe(media_file)
@@ -29,7 +30,7 @@ def rip_sub(media_file, stream_no):
   subtitle_file_name = os.path.splitext(media_file_name)[0] + '.srt'
   subtitle_file_path = os.path.join(sub_root, subtitle_file_name)
   command=f'ffmpeg -hide_banner -loglevel error -i "{media_file}" -map 0:{sream_no_as_str} -c:s copy "{subtitle_file_path}"'
-  return_code = !$command
+  return_code = os.system(command)
   return return_code, subtitle_file_path
 
 
@@ -73,7 +74,7 @@ def create_srt_from_video(video_file_path):
   if net_data != {}:
     selected_stream_no = try_to_get_best_sub_from_net_data(net_data)
     code, sub_name = rip_sub(video_file_path, selected_stream_no)
-    if code[0] == []:
+    if code == 0:
       return sub_name
     else:
       print(f'Error while riping stream {selected_stream_no} from {video_file_path}')
